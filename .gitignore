@@ -1,0 +1,21 @@
+# Go backend
+/backend/bin/
+/backend/vendor/
+/backend/*.exe
+/backend/*.log
+
+# Node frontend
+/frontend/node_modules/
+/frontend/build/
+frontend/.env
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs and temp files
+*.log
+*.tmp

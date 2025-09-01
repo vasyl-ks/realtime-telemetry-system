@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  # --- Go backend service ---
+  backend:
+    build:
+      context: ./backend       # Path to backend Dockerfile
+      dockerfile: Dockerfile
+    container_name: telemetry-backend
+    ports:
+      - "8080:8080"            # Expose backend API
+    volumes:
+      - ./backend/data:/app/data  # Persist SQLite database
+    restart: unless-stopped     # Auto-restart policy
+
+  # --- React frontend service ---
+  frontend:
+    build:
+      context: ./frontend      # Path to frontend Dockerfile
+      dockerfile: Dockerfile
+    container_name: telemetry-frontend
+    ports:
+      - "3000:80"               # Map container port 80 (Nginx) to host port 3000
+    depends_on:
+      - backend                  # Ensure backend starts first
+    restart: unless-stopped
