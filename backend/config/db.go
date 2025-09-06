@@ -17,6 +17,7 @@ func SetupDB() {
 	// Ensure the data directory exists
 	if _, err := os.Stat("./data"); os.IsNotExist(err) {
 		if err := os.Mkdir("./data", 0755); err != nil {
+
 			log.Fatalf("Failed to create data directory: %v", err)
 		}
 	}

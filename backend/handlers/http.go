@@ -1,17 +1,16 @@
 package handlers
 
 import (
+	"Realtime-Telemetry-System/config"
+	"Realtime-Telemetry-System/models"
+	"Realtime-Telemetry-System/services"
 	"encoding/json"
 	"log"
 	"net/http"
-	"sync"
-
-	"Realtime-Telemetry-System/config"
-	"Realtime-Telemetry-System/models"
 )
 
 // DBMutex protects database queries from concurrent access.
-var DBMutex sync.Mutex
+var DBMutex = &services.DBMutex
 
 // LatestSensorHandler returns the most recent sensor reading as JSON.
 // Responds with HTTP 204 if no data is available.

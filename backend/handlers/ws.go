@@ -13,6 +13,7 @@ import (
 )
 
 // Upgrader is used to upgrade HTTP connections to WebSocket connections.
+// Allow all connections because the WebSocket server is running locally on localhost.
 var Upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
